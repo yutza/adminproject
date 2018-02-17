@@ -43,12 +43,13 @@ include "nav.php";
                     <tr>
                         <?php
                         include "connection/connect.php";
-                        $sql="SELECT * FROM `tbl_aword_lenner`";
+                        $sql="SELECT * FROM `tbl_asword_alumni`";
                         $query=mysqli_query($conn,$sql);
                         if(!$query){
                             echo "Fail".mysqli_error($conn);
                         }
                         while ($row=mysqli_fetch_array($query)){ ?>
+                        <tr>
                             <td><?php echo $row[1]?></td>
                             <td><?php echo $row[2]?></td>
                             <td><?php echo $row[3]?></td>
@@ -68,6 +69,7 @@ include "nav.php";
                                         <button class="btn btn-danger">ลบ</button></td>
                                         <input hidden type="text" value="<?php echo $row[0]?>">
                                     </form>
+                                    </tr>
                          <?php   }
                             ?>
 
