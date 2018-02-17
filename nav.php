@@ -14,16 +14,16 @@
             <ul class="nav navbar-nav">
                 <?php
                 if($_SESSION["Code"]!=""){ ?>
-                    <li > <a href="home.php"><?php echo $_SESSION["Code"]?></a></li>
+                    <li > <a href="home.php"><?php echo $_SESSION["Code"]?><span class="pull-right hidden-xs showopacity glyphicon glyphicon-pencil" ></span></a></li>
                <?php }
                 ?>
-                <li > <a href="home.php">หน้าแรก</a></li>
-                <li >  <a href="butget.php">ข้อมูลงบประมาณ</a></li>
-                <li >  <a href="department.php">ข้อมูลสาขาวิชา</a></li>
-                <li >  <a href="student.php">ข้อมูลนักเรียนนักศึกษา</a></li>
-                <li ><a href="techer.php">ข้อมูลครู</a></li>
+                <li > <a href="home.php">หน้าแรก<span class="pull-right hidden-xs showopacity glyphicon glyphicon-home" ></span> </a></li>
+                <li >  <a href="butget.php">ข้อมูลงบประมาณ<span class="pull-right hidden-xs showopacity glyphicon glyphicon-usd" ></span></a></li>
+                <li >  <a href="department.php">ข้อมูลสาขาวิชา<span class="pull-right hidden-xs showopacity glyphicon glyphicon-list-alt" ></span></a></li>
+                <li >  <a href="student.php">ข้อมูลนักเรียนนักศึกษา<span class="pull-right hidden-xs showopacity glyphicon glyphicon-user" ></span></a></li>
+                <li ><a href="techer.php">ข้อมูลครู<span class="pull-right hidden-xs showopacity glyphicon glyphicon-bullhorn" ></span></a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">ข้อมูลผลงาน <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">ข้อมูลผลงาน <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-folder-open"></span></a>
                     <ul class="dropdown-menu forAnimate" role="menu">
                         <li><a href="adword_student.php">รางวัลสิ่งประดิษฐ์ นวัตกรรม งานสร้างสรรค์ หรืองานวิจัย ของผู้เรียน</a></li>
                         <li><a href="adword_Lenner.php">รางวัลการแข่งขันทักษะวิชาชีพ ของผู้เรียน</a></li>
@@ -35,7 +35,7 @@
                     </ul>
                 </li>
                 <li ><a href="#">รายงาน<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>
-                <li ><a href="logout.php">ออกจากระบบ<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
+                <li ><a href="logout.php">ออกจากระบบ<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-remove"></span></a></li>
             </ul>
         </div>
     </div>
