@@ -12,6 +12,7 @@
     include "lib.php";
 
     ?>
+    <script src="js/aword_al.js"></script>
 </head>
 <body>
 
@@ -55,19 +56,16 @@ include "nav.php";
                             <td><?php echo $row[3]?></td>
                             <td><?php echo $row[4]?></td>
                             <td><?php echo $row[5]?></td>
-                            <td><?php echo $row[6]?></td>
+                            <td><a href="<?php echo $row[6]?>" target="_blank">ดูกลักฐาน</a>  </td>
                             <?php
                             if($row!=null){?>
                                 <td>
-                                    <form action="#" method="post">
-                                        <button class="btn btn-primary">แก้ไข</button></td>
-                                        <input hidden type="text" value="<?php echo $row[0]?>">
-                                    </form>
+                                <div class="aw_al"><a href="connection\select_aword_al.php?id=<?php echo $row[0]?>" class="btn btn-info">แก้ไข</a></div>
 
                                 <td>
-                                    <form>
+                                    <form action="delete_aw_al.php" method="post"> 
                                         <button class="btn btn-danger">ลบ</button></td>
-                                        <input hidden type="text" value="<?php echo $row[0]?>">
+                                        <input name="txtid" hidden type="text" value="<?php echo $row[0]?>">
                                     </form>
                                     </tr>
                          <?php   }
@@ -83,7 +81,7 @@ include "nav.php";
 
                 </div>
                 <div class="form-group" id="edit_techer">
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addaword_lenner">เพิ่ม</button>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#addaword_alumni">เพิ่ม</button>
                 </div>
             </div>
 
@@ -93,9 +91,9 @@ include "nav.php";
     </div>
 </div>
 <!-- Modal -->
-<div class="modal fade" id="addaword_lenner" role="dialog">
+<div class="modal fade" id="addaword_alumni" role="dialog">
     <div class="modal-dialog">
-<form action="#" id="form_updatetecher" method="post">
+<form action="insert_ae_al.php" id="form_insert_alumni" method="post" enctype="multipart/form-data" >
     <!-- Modal content-->
     <div class="modal-content">
         <div class="modal-header">
@@ -106,19 +104,19 @@ include "nav.php";
 
             <div class="panel panel-info" style="margin-top: 5px">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><h3 class="text-center">ข้อมูลรางวัลจากการแข่งขันทักษะวิชาชีพ ของผู้เรียน</h3></h3>
+                    <h3 class="panel-title"><h3 class="text-center">ข้อมูลศิษเก่าที่ประสบความสำเร็จในการประกอบอาชีพ</h3></h3>
                 </div>
                 <div class="form-group" style="margin-left: 20px" >
                     <label>ชื่อศิษย์เก่า</label>
-                    <input type="text"  class="form-control" placeholder="ชื่อศิษย์เก่า" >
+                    <input name="txtnameal"  type="text"  class="form-control" placeholder="ชื่อศิษย์เก่า" >
                 </div>
                 <div class="form-group" style="margin-left: 20px" >
                     <label>ชื่อรางวัล</label>
-                    <input type="text"  class="form-control" placeholder="ชื่อรางวัล" >
+                    <input name="txtname" type="text"  class="form-control" placeholder="ชื่อรางวัล" >
                 </div>
                 <div class="form-group" style="margin-left: 20px">
                     <label>ปีที่ได้รางวัล</label>
-                   <select class="form-control">
+                   <select name="txtyear" class="form-control">
                        <option>2554</option>
                        <option>2555</option>
                        <option>2556</option>
@@ -131,18 +129,10 @@ include "nav.php";
                        <option>2563</option>
                    </select>
                 </div>
-                <div class="form-group" style="margin-left: 20px" >
-                    <label>รางวัล</label>
-                  <select class="form-control">
-                      <option>ชนะเลิศ</option>
-                      <option>รองชนะเลิศ</option>
-                      <option>รองชนะเลิศอันดับสอง</option>
-                      <option>ชมเชย</option>
-                  </select>
-                </div>
+               
                 <div class="form-group" style="margin-left: 20px" >
                     <label>ระดับ</label>
-                    <select class="form-control">
+                    <select name="txttire" class="form-control">
                         <option>นานาชาติ</option>
                         <option>ประเทศ</option>
                         <option>ภาค</option>
@@ -151,13 +141,39 @@ include "nav.php";
                 </div>
                 <div class="form-group" style="margin-left: 20px" >
                     <label>จากหน่วยงาน</label>
-                    <input type="text"  class="form-control" placeholder="จากหน่วยงาน" >
+                    <input name="txtdepart" type="text"  class="form-control" placeholder="จากหน่วยงาน" >
                 </div>
                 <div class="form-group" style="margin-left: 20px" >
                     <label>หลักฐาน</label>
-                    <input type="file"  class="form-control" >
+                    <input name="txtfile_al" type="file"  class="form-control" >
                 </div>
             </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit"class="btn btn-success">บันทึก</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">ปิด</button>
+        </div>
+    </div>
+</form>
+
+
+    </div>
+</div>
+
+</div>
+
+<div class="modal fade" id="update_aword_alumni" role="dialog">
+    <div class="modal-dialog">
+<form action="update_aword_al.php" id="form_insert_alumni" method="post" enctype="multipart/form-data" >
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body" id="data_al">
+
+            
         </div>
         <div class="modal-footer">
             <button type="submit"class="btn btn-success">บันทึก</button>
