@@ -187,9 +187,33 @@ include "nav.php";
 </form>
 </div>
 </div>
-<div id="modalupdate">
+<div class="modal fade" id="alertdata" role="dialog">
+<form action="update_aw_st.php" id="form_load_data" method="post" enctype="multipart/form-data">
+<div class="modal-dialog">
+    
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <div class="modal-body" id="bodydata">
 
+                </div>
+               
+                
+                <div class="modal-footer">
+                <button type="submit"class="btn btn-success">บันทึก</button>
+                    <button type="button" id="closemo" class="btn btn-danger" data-dismiss="modal">ปิด</button>
+                    
+                </div>
+            </div>
+            
+    </form>
+    </div>
 </div>
-<?php include "modal.php" ?>
+<?php include "modal.php";
+
+?>
 </body>
 </html>

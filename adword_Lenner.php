@@ -12,6 +12,7 @@
     include "lib.php";
 
     ?>
+    <script src="js/aword_lenner.js"></script>
 </head>
 <body>
 
@@ -40,7 +41,7 @@ include "nav.php";
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                   
                         <?php
                         include "connection/connect.php";
                         $sql="SELECT * FROM `tbl_aword_lenner`";
@@ -49,31 +50,30 @@ include "nav.php";
                             echo "Fail".mysqli_error($conn);
                         }
                         while ($row=mysqli_fetch_array($query)){ ?>
+                        <tr>
                             <td><?php echo $row[1]?></td>
                             <td><?php echo $row[2]?></td>
                             <td><?php echo $row[3]?></td>
                             <td><?php echo $row[4]?></td>
                             <td><?php echo $row[5]?></td>
-                            <td><?php echo $row[6]?></td>
+                            <td><a href="<?php echo $row[6]?>" target="_blank">ดูกลักฐาน</a></td>
                             <?php
                             if($row!=null){?>
                                 <td>
-                                    <form action="#" method="post">
-                                        <button class="btn btn-primary">แก้ไข</button></td>
-                                        <input hidden type="text" value="<?php echo $row[0]?>">
-                                    </form>
+                                    <div class="aw_len"> <a class="btn btn-info" href="connection\select_aw_l.php?id=<?php echo $row[0]?>">แก้ไข</a></div>
 
                                 <td>
-                                    <form>
-                                        <button class="btn btn-danger">ลบ</button></td>
-                                        <input hidden type="text" value="<?php echo $row[0]?>">
+                                    <form action="delete_aw_len.php" method="post">
+                                        <button type="submit" class="btn btn-danger">ลบ</button></td>
+                                        <input hidden name="txtid" type="text" value="<?php echo $row[0]?>">
                                     </form>
+                                    </tr>    
                          <?php   }
                             ?>
 
                        <?php }
                         ?>
-                    </tr>
+                   
                     </tbody>
                 </table>
                 </div>
@@ -93,7 +93,7 @@ include "nav.php";
 <!-- Modal -->
 <div class="modal fade" id="addaword_lenner" role="dialog">
     <div class="modal-dialog">
-<form action="#" id="form_updatetecher" method="post">
+<form action="insert_aw_l.php" id="form_update_aw_l" method="post" enctype="multipart/form-data">
     <!-- Modal content-->
     <div class="modal-content">
         <div class="modal-header">
@@ -107,12 +107,12 @@ include "nav.php";
                     <h3 class="panel-title"><h3 class="text-center">ข้อมูลรางวัลจากการแข่งขันทักษะวิชาชีพ ของผู้เรียน</h3></h3>
                 </div>
                 <div class="form-group" style="margin-left: 20px" >
-                    <label>ชชื่อรายการแข่งขันทักษะวิชาชีพ</label>
-                    <input type="text"  class="form-control" placeholder="ชื่อสิ่งประดิษฐ์ นวัตกรรม งานสร้างสรรค์ หรืองานวิจัย" >
+                    <label>ชื่อรายการแข่งขันทักษะวิชาชีพ</label>
+                    <input name="txtname" type="text"  class="form-control" placeholder="ชื่อสิ่งประดิษฐ์ นวัตกรรม งานสร้างสรรค์ หรืองานวิจัย" >
                 </div>
                 <div class="form-group" style="margin-left: 20px">
                     <label>ปีการศึกษาที่ได้รับรางวัล</label>
-                   <select class="form-control">
+                   <select name="txtyear" class="form-control">
                        <option>2554</option>
                        <option>2555</option>
                        <option>2556</option>
@@ -127,7 +127,7 @@ include "nav.php";
                 </div>
                 <div class="form-group" style="margin-left: 20px" >
                     <label>รางวัล</label>
-                  <select class="form-control">
+                  <select name="txtaword" class="form-control">
                       <option>ชนะเลิศ</option>
                       <option>รองชนะเลิศ</option>
                       <option>รองชนะเลิศอันดับสอง</option>
@@ -136,7 +136,7 @@ include "nav.php";
                 </div>
                 <div class="form-group" style="margin-left: 20px" >
                     <label>ระดับ</label>
-                    <select class="form-control">
+                    <select name="txttire" class="form-control">
                         <option>นานาชาติ</option>
                         <option>ประเทศ</option>
                         <option>ภาค</option>
@@ -145,11 +145,11 @@ include "nav.php";
                 </div>
                 <div class="form-group" style="margin-left: 20px" >
                     <label>หน่วยงานที่จัด</label>
-                    <input type="text"  class="form-control" placeholder="หน่วยงานที่จัด" >
+                    <input name="txtdepart" type="text"  class="form-control" placeholder="หน่วยงานที่จัด" >
                 </div>
                 <div class="form-group" style="margin-left: 20px" >
                     <label>หลักฐาน</label>
-                    <input type="file"  class="form-control" >
+                    <input name="txtfile_len" type="file"  class="form-control" >
                 </div>
             </div>
         </div>
@@ -164,6 +164,31 @@ include "nav.php";
     </div>
 </div>
 
+</div>
+<div class="modal fade" id="alertdatalen" role="dialog">
+<form action="update_aw_len.php" id="form_load_data" method="post" enctype="multipart/form-data">
+<div class="modal-dialog">
+    
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <div class="modal-body" id="bodydata_len">
+
+                </div>
+               
+                
+                <div class="modal-footer">
+                <button type="submit"class="btn btn-success">บันทึก</button>
+                    <button type="button" id="closemo" class="btn btn-danger" data-dismiss="modal">ปิด</button>
+                    
+                </div>
+            </div>
+            
+    </form>
+    </div>
 </div>
 </body>
 </html>

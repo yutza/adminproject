@@ -3,6 +3,11 @@ function showmo(title, body) {
     $("#bodymo").html(body)
     $("#alertshow").modal('show');
 }
+function showdata(body){
+    $("#bodydata").html(body);
+    $("#alertdata").modal('show');
+}
+
 $(document).ready(function () {
     $("#btnupdate").hide();
     $('.aw_st a').click(function (event) {
@@ -14,7 +19,7 @@ $(document).ready(function () {
 
 
         $.get($(this).attr('href'), function (data) {
-            showmo('', data);
+            showdata(data);
             $("#btnupdate").show();
             //$("#modalupdate").html(data);
             //$("#form_updatetecher").modal('show');
@@ -30,4 +35,5 @@ $(document).ready(function () {
 
         //return false; // for good measure
     });
+ 
 });

@@ -64,6 +64,7 @@ if(isset($id)){
                     <div class="form-group" style="margin-left: 20px" >
                         <label>หลักฐาน</label>
                         <input value="<?php echo $row[6] ?>" type="file" name="txtevi"  class="form-control" >
+                        <input hidden type="text" name="id" id="id" value=<?php echo $id ?>>
                     </div>
                </div>
     <?php } 

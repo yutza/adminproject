@@ -16,7 +16,7 @@
                
                 
                 <div class="modal-footer">
-                    <input type="submit" id="btnupdate" value="บันทึกข้อมูล" class="btn btn-sucssce">
+                    <input hidden type="submit" id="btnupdate" value="ตกลง" class="btn btn-success">
                     <button type="button" id="closemo" class="btn btn-danger" data-dismiss="modal">ปิด</button>
                     
                 </div>

@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-   
+    $("#btnupdate").hide();
 $("#form_login").submit(function (e) {
     e.preventDefault();
         //alert("OK");
