@@ -20,7 +20,7 @@
                 <li > <a href="home.php">หน้าแรก</a></li>
                 <li >  <a href="butget.php">ข้อมูลงบประมาณ</a></li>
                 <li >  <a href="department.php">ข้อมูลสาขาวิชา</a></li>
-                <li >  <a href="home.php">ข้อมูลนักเรียนนักศึกษา</a></li>
+                <li >  <a href="student.php">ข้อมูลนักเรียนนักศึกษา</a></li>
                 <li ><a href="techer.php">ข้อมูลครู</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">ข้อมูลผลงาน <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
